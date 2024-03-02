@@ -2,13 +2,17 @@ package tech.ada.todolist.todo;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/todo")
 public class TodoController {
 
-    @GetMapping("/mock")
-    public String tarefaMockada(){
-        return "tarefa mockada";
+    private TodoService service = new TodoService();
+
+    @GetMapping("/all")
+    public List<Tarefa> recuperarTarefas(){
+        return service.getAll();
     }
 
     @GetMapping
@@ -18,7 +22,7 @@ public class TodoController {
 
     @PostMapping
     public Tarefa criaTarefa(@RequestBody Tarefa tarefa){
-        //salva a minha tarefa
+        service.salvarTarefa(tarefa);
         return tarefa;
     }
 

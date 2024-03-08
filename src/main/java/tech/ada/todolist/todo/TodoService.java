@@ -2,6 +2,8 @@ package tech.ada.todolist.todo;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TodoService {
 
@@ -15,7 +17,7 @@ public class TodoService {
         repository.save(tarefa);
     }
 
-//    public List<Tarefa> getAll() {
-//        return repository;
-//    }
+    public List<Tarefa> getAll() {
+        return (List<Tarefa>) repository.findAll();
+    }
 }

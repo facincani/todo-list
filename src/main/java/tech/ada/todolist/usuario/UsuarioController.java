@@ -1,9 +1,6 @@
 package tech.ada.todolist.usuario;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -16,7 +13,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario salvarUsuario(Usuario usuario){
+    public Usuario salvarUsuario(@RequestBody Usuario usuario){
         service.salvarUsuario(usuario);
         return usuario;
     }
@@ -24,6 +21,12 @@ public class UsuarioController {
     @GetMapping
     public Iterable<Usuario> getAllUsuarios(){
         return service.getAll();
+    }
+
+    @GetMapping
+    @RequestMapping("/teste")
+    public String getAllUsuariosDois(){
+        return "Sucesso";
     }
 
 }

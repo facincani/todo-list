@@ -11,12 +11,20 @@ public class UsuarioService {
         this.repository = repository;
     }
 
-    public void salvarUsuario(Usuario usuario){
+    public void salvarUsuario(UsuarioEntity usuario){
         repository.save(usuario);
     }
 
-    public Iterable<Usuario> getAll(){
-        return repository.findAll();
+    public Iterable<UsuarioDTO> getAll(){
+//        repository.findAll().forEach(entidade -> {
+//
+//        });
+        return null;
     }
 
+    public UsuarioDTO getFirst() {
+        UsuarioEntity entidade = repository.findById(1).get();
+
+        return new UsuarioDTO(entidade);
+    }
 }

@@ -1,7 +1,7 @@
 package tech.ada.todolist.todo;
 
 import org.springframework.web.bind.annotation.*;
-import tech.ada.todolist.usuario.Usuario;
+import tech.ada.todolist.usuario.UsuarioEntity;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class TodoController {
     @PostMapping
     public Tarefa criaTarefa(@RequestBody Tarefa tarefa){
 
-        Usuario usuario = new Usuario();
+        UsuarioEntity usuario = new UsuarioEntity();
 
         service.salvarTarefa(tarefa);
         return tarefa;

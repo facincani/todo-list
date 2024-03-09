@@ -1,9 +1,7 @@
 package tech.ada.todolist.todo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import tech.ada.todolist.usuario.UsuarioEntity;
 
 import java.time.LocalDateTime;
 
@@ -17,6 +15,18 @@ public class Tarefa {
     private String descricao;
     private LocalDateTime prazo;
     private Boolean concluida;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private UsuarioEntity usuario;
+
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+    }
 
     public Integer getId() {
         return id;

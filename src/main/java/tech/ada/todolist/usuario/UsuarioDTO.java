@@ -1,16 +1,19 @@
 package tech.ada.todolist.usuario;
 
-import jakarta.persistence.*;
+public class UsuarioDTO {
 
-@Entity
-@Table(name = "usuario")
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String email;
+
+    public UsuarioDTO() {
+    }
+
+    public UsuarioDTO(UsuarioEntity entity) {
+        this.id = entity.getId();
+        this.nome = entity.getNome();
+        this.email = entity.getEmail();
+    }
 
     public Integer getId() {
         return id;

@@ -13,14 +13,20 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario salvarUsuario(@RequestBody Usuario usuario){
+    public UsuarioEntity salvarUsuario(@RequestBody UsuarioEntity usuario){
         service.salvarUsuario(usuario);
         return usuario;
     }
 
     @GetMapping
-    public Iterable<Usuario> getAllUsuarios(){
+    public Iterable<UsuarioDTO> getAllUsuarios(){
         return service.getAll();
+    }
+
+    @GetMapping
+    @RequestMapping("/one")
+    public UsuarioDTO getOneUser(){
+        return service.getFirst();
     }
 
     @GetMapping

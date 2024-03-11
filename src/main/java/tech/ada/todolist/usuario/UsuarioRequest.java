@@ -1,27 +1,17 @@
 package tech.ada.todolist.usuario;
 
-public class UsuarioDTO {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
-    private Integer id;
+public class UsuarioRequest {
+
     private String nome;
     private String email;
+    @NotNull
+    @NotBlank(message = "senha não pode estar em branco")
+    @Pattern(regexp = "[\\w.]{5,20}")
     private String senha;
-
-    public UsuarioDTO() {}
-
-    public UsuarioDTO(UsuarioEntity entity) {
-        this.id = entity.getId();
-        this.nome = entity.getNome();
-        this.email = entity.getEmail();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;

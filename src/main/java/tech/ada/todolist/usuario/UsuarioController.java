@@ -1,5 +1,8 @@
 package tech.ada.todolist.usuario;
 
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,9 +16,16 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public UsuarioEntity salvarUsuario(@RequestBody UsuarioEntity usuario){
+    public ResponseEntity<UsuarioRequest> salvarUsuario(@Valid @RequestBody UsuarioRequest usuario){
         service.salvarUsuario(usuario);
-        return usuario;
+        return ResponseEntity.ok(usuario);
+    }
+
+    @PostMapping
+    @RequestMapping("/dto")
+    public String salvarUsuarioDTO(@RequestBody UsuarioDTO usuario){
+        service.salvarUsuarioDTO(usuario);
+        return HttpStatus.OK.toString();
     }
 
     @GetMapping

@@ -6,9 +6,13 @@ import jakarta.validation.constraints.Pattern;
 
 public class UsuarioRequest {
 
+    @NotNull(message = "nome não pode estar nulo")
+    @NotBlank(message = "nome não pode estar em branco")
     private String nome;
-    private String email;
     @NotNull
+    @NotBlank
+    private String email;
+    @NotNull(message = "senha não pode estar nula")
     @NotBlank(message = "senha não pode estar em branco")
     @Pattern(regexp = "[\\w.]{5,20}")
     private String senha;

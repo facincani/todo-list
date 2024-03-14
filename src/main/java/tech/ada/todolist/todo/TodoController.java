@@ -22,17 +22,15 @@ public class TodoController {
 
 
 
-    @GetMapping
-    public String salvarTarefa(){
-        return "tarefa salva";
-    }
+//    @GetMapping
+//    public String salvarTarefa(){
+//        return "tarefa salva";
+//    }
 
     @PostMapping
-    public Tarefa criaTarefa(@RequestBody Tarefa tarefa){
-
-        UsuarioEntity usuario = new UsuarioEntity();
-
-        service.salvarTarefa(tarefa);
+    @RequestMapping("/{idUsuario}")
+    public Tarefa criaTarefa(@RequestBody Tarefa tarefa, @PathVariable Integer idUsuario){
+        service.salvarTarefa(tarefa, idUsuario);
         return tarefa;
     }
 
